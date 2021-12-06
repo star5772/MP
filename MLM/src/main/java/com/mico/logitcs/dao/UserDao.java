@@ -25,6 +25,6 @@ public class UserDao {
 	}
 	
 	public int insert(User user) {
-		return tpl.insert("userMapper", user);
+		return tpl.insert("userMapper.insert", user);
 	}
 }

@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Data
@@ -13,23 +12,10 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Builder
 @Accessors(chain=true)
-
-public class User {
+public class UserDto {
 	
 	@Getter
-	@Setter
 	private String userName;
 	@Getter
-	@Setter
 	private int uno;
-	
-	public String getUno() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public String getUserName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

@@ -1,37 +1,38 @@
 package com.mico.logitcs;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mico.logitcs.dao.UserDao;
 import com.mico.logitcs.entity.User;
+import com.mico.logitcs.entity.UserDto;
 
-/**
- * Handles requests for the application home page.
- */
+
 @Controller
 public class HomeController {
 	
 	@Inject
 	private UserDao dao;
+	@Inject
+	private ModelMapper modelMapper;
 	
-	@GetMapping("/")
+	@GetMapping({"/user/join","/"})
 	public ModelAndView write() {
 		return new ModelAndView("home");
 	}
 	
-	public String write(int uno,String userName) {
-		dao.insert(user)
+	@PostMapping("/user/join")
+	public String write(User user) {
+		System.out.println(user.getUno());
+		System.out.println(user.getUserName());
+		//dao.insert(user);
+		
+		return "redirect:system/msg";
 	}
 	
 	
