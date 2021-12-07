@@ -9,52 +9,31 @@ hst	-	내역
 rel	-	출고
 lnd -	손망실
 
-입고이력	ware_housing_hist
+입고&이력	ware_housing_hist
+	이력번호	hst_pk	numeric(15)
 	자재번호	mat_no	numeric(4)
-	자재명	mat_nm	varchar(50)
-	자재분류	mat_cls	varchar(1)
 	입고분류	wh_cls	varchar(1)
 	입고량	wh_amt	numeric(10)
 	입고일	wh_dtm	date
 	입고내역	wh_hst	varchar(2000)
-	
+(자재번호로 자재명,분류 불러옴)	
 
 자재목록	materials_list
 	자재번호	mat_no	numeric(4)
 	자재분류	mat_cls	varchar(1)
 	자재명	mat_nm	varchar(50)
-	
 
-입고		ware_housing
+출고		RELEASE_HIST
+	이력번호	hst_pk	numeric(15)
 	자재번호	mat_no	numeric(4)
-	자재분류	mat_cls	varchar(1)
-	자재명	mat_nm	varchar(50)
-	입고분류 	wh_amt	varchar(1)		ex)자가입고,위탁입고
-	입고량	wh_amt	numeric(10)
-	입고일	wh_dtm	date
-	
-출고		release
-	자재번호	mat_no	numeric(4)
-	자재분류	mat_cls	varchar(1)
-	자재명	mat_nm	varchar(50)
 	출고량	rel_amt	numeric(10)
 	출고일	rel_dtm	date
 	출고분류 	rel_cls	varchar(1)		ex) 사용,손망실,대여
-	공정번호	fac_nm	varchar(1)
-	
-출고이력	release_hist
-	자재번호	mat_no	numeric(4)
-	자재분류	mat_cls	varchar(1)
-	자재명	mat_nm	varchar(50)
-	출고량	rel_amt	numeric(10)
-	출고일	rel_dtm	date
-	출고분류	rel_cls	varchar(1)
-	출고내역	rel_hst	varchar(2000)
+	공정번호	fac_no	varchar(1)
+	출고내역	rel_hst	varchar(2000)	
 
 재고량	materials_amt
 	자재번호	mat_no	numeric(4)
-	자재분류	mat_cls	varchar(1)
-	자재명	mat_nm	varchar(50)
 	총재고량 	mat_tot_amt	numeric(10)
 	손망실여부	lnd_cls	varchar(1)
 	공장번호	fac_no	varchar(1)
@@ -62,15 +41,68 @@ lnd -	손망실
 	
 손망실	loss_and_damege
 	자재번호	mat_no	numeric(4)
-	자재분류	mat_cls	varchar(1)
-	자재명	mat_nm	varchar(50)
 	손망실분류	lnd_cls	varchar(1)
 	손망실양	lnd_amt	numeric(10)
 	처리여부	proc_ym	varchar(1)
 	손망실 날짜 lnd_dtm	date	(처리일자가 아닌 손망실로 분류된 날짜)
 	
+	
+create table WARE_HOUSING_HIST(
+HST_PK NUMERIC(12),
+MAT_NO NUMERIC(4),
+WH_CLS VARCHAR(1),
+WH_AMT NUMERIC(10),
+WH_DTM DATE,
+WH_HST VARCHAR(2000)
+);
+
+alter table WARE_HOUSING_HIST add primary key (HST_PK);
+
+create table MATERIALS_LIST(
+MAT_NO NUMERIC(4),
+MAT_CLS VARCHAR(1),
+MAT_NM VARCHAR(50)
+);
+
+alter table MATERIALS_LIST add primary key (MAT_NO);
+
+create table RELEASE_HIST(
+REL_HST_PK NUMERIC(15),
+MAT_NO NUMERIC(4),
+REL_AMT NUMERIC(10),
+REL_DTM DATE,
+REL_CLS VARCHAR(1),
+FAC_NO VARCHAR(1),
+REL_HST VARCHAR(2000)
+);
+
+alter table RELEASE_HIST add primary key (REL_HST_PK);
+
+create table MATERIALS_AMT (
+MAT_NO NUMERIC(4),
+MAT_TOT_AMT NUMERIC(10),
+LND_CLS VARCHAR(1),
+FAC_NO varchar(1),
+MAT_LOC VARCHAR(20)
+);
+
+alter table MATERIALS_AMT add primary key (MAT_NO,FAC_NO,MAT_LOC);
+
+create table LOSS_AND_DAMEGE (
+MAT_NO NUMERIC(4),
+LND_CLS VARCHAR(1),
+LND_AMT NUMERIC(10),
+PROC_YM VARCHAR(1),
+LND_DTM DATE
+);
+
+alter table LOSS_AND_DAMEGE add primary key (MAT_NO,LND_CLS);
+
 
 	
-
-
+	
+	
+	
+	
+	
 	
