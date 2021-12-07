@@ -1,0 +1,76 @@
+mat -	자재
+no	-	번호
+nm	-	명,이름
+cls	-	분류
+wh	-	입고
+amt	-	양
+dtm	-	일/날짜
+hst	-	내역
+rel	-	출고
+lnd -	손망실
+
+입고이력	ware_housing_hist
+	자재번호	mat_no	numeric(4)
+	자재명	mat_nm	varchar(50)
+	자재분류	mat_cls	varchar(1)
+	입고분류	wh_cls	varchar(1)
+	입고량	wh_amt	numeric(10)
+	입고일	wh_dtm	date
+	입고내역	wh_hst	varchar(2000)
+	
+
+자재목록	materials_list
+	자재번호	mat_no	numeric(4)
+	자재분류	mat_cls	varchar(1)
+	자재명	mat_nm	varchar(50)
+	
+
+입고		ware_housing
+	자재번호	mat_no	numeric(4)
+	자재분류	mat_cls	varchar(1)
+	자재명	mat_nm	varchar(50)
+	입고분류 	wh_amt	varchar(1)		ex)자가입고,위탁입고
+	입고량	wh_amt	numeric(10)
+	입고일	wh_dtm	date
+	
+출고		release
+	자재번호	mat_no	numeric(4)
+	자재분류	mat_cls	varchar(1)
+	자재명	mat_nm	varchar(50)
+	출고량	rel_amt	numeric(10)
+	출고일	rel_dtm	date
+	출고분류 	rel_cls	varchar(1)		ex) 사용,손망실,대여
+	공정번호	fac_nm	varchar(1)
+	
+출고이력	release_hist
+	자재번호	mat_no	numeric(4)
+	자재분류	mat_cls	varchar(1)
+	자재명	mat_nm	varchar(50)
+	출고량	rel_amt	numeric(10)
+	출고일	rel_dtm	date
+	출고분류	rel_cls	varchar(1)
+	출고내역	rel_hst	varchar(2000)
+
+재고량	materials_amt
+	자재번호	mat_no	numeric(4)
+	자재분류	mat_cls	varchar(1)
+	자재명	mat_nm	varchar(50)
+	총재고량 	mat_tot_amt	numeric(10)
+	손망실여부	lnd_cls	varchar(1)
+	공장번호	fac_no	varchar(1)
+	자재위치	mat_loc	varchar(20)
+	
+손망실	loss_and_damege
+	자재번호	mat_no	numeric(4)
+	자재분류	mat_cls	varchar(1)
+	자재명	mat_nm	varchar(50)
+	손망실분류	lnd_cls	varchar(1)
+	손망실양	lnd_amt	numeric(10)
+	처리여부	proc_ym	varchar(1)
+	손망실 날짜 lnd_dtm	date	(처리일자가 아닌 손망실로 분류된 날짜)
+	
+
+	
+
+
+	

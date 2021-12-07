@@ -23,16 +23,16 @@ public class HomeController {
 	
 	@GetMapping({"/user/join","/"})
 	public ModelAndView write() {
-		return new ModelAndView("home");
+		return new ModelAndView("user");
 	}
 	
 	@PostMapping("/user/join")
 	public String write(User user) {
 		System.out.println(user.getUno());
 		System.out.println(user.getUserName());
-		//dao.insert(user);
+		dao.insert(user);
 		
-		return "redirect:system/msg";
+		return "redirect:/user/join";
 	}
 	
 	
