@@ -2,7 +2,11 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org/DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.mico.logitcs.entity.User" alias="user"/>
+		<typeAlias type="com.mico.logitcs.entity.Materials" alias="mat"/>
+		<typeAlias type="com.mico.logitcs.entity.WareHist" alias="warhst"/>
+		<typeAlias type="com.mico.logitcs.entity.Release" alias="rel"/>
+		<typeAlias type="com.mico.logitcs.entity.Loss" alias="lnd"/>
+		<typeAlias type="com.mico.logitcs.entity.MaterialsAmt" alias="matAmt"/>
 	</typeAliases>
 	<typeHandlers>
 		<typeHandler handler="com.mico.logitcs.typehandler.LocalDateTimeTypeHandler"/>
